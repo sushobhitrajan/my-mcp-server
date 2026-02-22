@@ -8,6 +8,7 @@ Each folder contains a `design.md` and any supporting diagrams.
 | Folder | What it covers |
 |--------|---------------|
 | [`01-architecture/`](./01-architecture/design.md) | Overall server architecture — Tools, Resources, Prompts, transport layer |
+| [`01-architecture/why-mcp.md`](./01-architecture/why-mcp.md) | Universal USB port vs custom plugin architectures (N × M Problem) |
 | [`02-llm-client/`](./02-llm-client/design.md) | Gemini-powered MCP client — how the LLM connects to the server |
 
 ---

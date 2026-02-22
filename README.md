@@ -61,6 +61,7 @@ my-mcp-server/
 ├── spec/
 │   ├── README.md             ← Spec index
 │   ├── 01-architecture/      ← Server architecture design
+│   │   └── why-mcp.md        ← "N × M" problem breakdown
 │   └── 02-llm-client/        ← LLM client design
 ├── .env                      ← API keys (gitignored)
 ├── package.json
