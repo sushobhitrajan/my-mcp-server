@@ -88,13 +88,30 @@ my-mcp-server/
 npm install
 ```
 
-### 2. Run in dev mode (with hot reload)
+### 2. Set up your API key (required for LLM client)
+
+```bash
+cp .env.example .env
+```
+
+Then open `.env` and add your Gemini API key:
+
+```
+GEMINI_API_KEY=your_key_here
+```
+
+> Get a free key at [aistudio.google.com/app/apikeys](https://aistudio.google.com/app/apikeys).
+> See `spec/02-llm-client/design.md` for detailed setup steps.
+>
+> ⚠️ The MCP Inspector and server work without the key. Only `npm run client` needs it.
+
+### 3. Run in dev mode (with hot reload)
 
 ```bash
 npm run dev
 ```
 
-### 3. Open the MCP Inspector (visual debugger in the browser)
+### 4. Open the MCP Inspector (visual debugger in the browser)
 
 ```bash
 npm run inspector
@@ -105,7 +122,15 @@ This opens a web UI where you can:
 - Browse and read resources
 - Try out prompt templates
 
-### 4. Build for production
+### 5. Run the Gemini LLM client (requires API key from step 2)
+
+```bash
+npm run client
+```
+
+Chat in plain English — Gemini will automatically call tools as needed.
+
+### 6. Build for production
 
 ```bash
 npm run build
