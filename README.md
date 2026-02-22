@@ -140,6 +140,12 @@ npm run build
 
 ## 🔧 Tools
 
+> Tools let the AI execute actions (like making an API call or calculating math).
+
+**How to use:**
+- **In MCP Inspector** (`npm run inspector`): Go to the **Tools** tab, select a tool, enter the JSON arguments, and click "Run Tool".
+- **In Gemini Client** (`npm run client`): Ask natural language questions like *"What is 25 x 4?"* or *"What's the weather in Tokyo?"* Gemini will automatically call the tool for you.
+
 ### `calculator`
 Perform basic arithmetic operations.
 
@@ -182,6 +188,12 @@ Get current weather for a city (uses mock data for learning).
 
 ## 📄 Resources
 
+> Resources provide read-only data (like a file or database) for the AI to read.
+
+**How to use:**
+- **In MCP Inspector** (`npm run inspector`): Go to the **Resources** tab and click "List Resources" to see all available notes. Click on a specific URI (like `notes://1`) and click "Read Resource" to see its contents.
+- **In Gemini Client**: *(Coming soon - currently the client only supports Tools, not Resources).*
+
 Resources are accessed via URI:
 
 | URI | Description |
@@ -194,6 +206,12 @@ Resources are accessed via URI:
 ---
 
 ## 💬 Prompts
+
+> Prompts are reusable templates (like slash commands) that generate structured instructions for an LLM.
+
+**How to use:**
+- **In MCP Inspector** (`npm run inspector`): Go to the **Prompts** tab, select `code-review` or `explain-concept`, fill out the required arguments (e.g., `language: "TypeScript"`), and click "Get Prompt". It returns a highly detailed, ready-to-use prompt template.
+- **In Claude Desktop**: These appear as slash commands. You type `/code-review` and it prompts you for the arguments.
 
 ### `code-review`
 Generates a structured code review prompt.
