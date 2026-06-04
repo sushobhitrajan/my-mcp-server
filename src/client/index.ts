@@ -111,10 +111,33 @@ async function main() {
         },
     ];
 
-    // 4. Set up Gemini
+    // 4. Set up Gemini and dynamically detect model
     const genAI = new GoogleGenerativeAI(GEMINI_API_KEY as string);
+    let modelName = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+    
+    if (!process.env.GEMINI_MODEL) {
+        try {
+            console.log("🔍 Auto-detecting latest Gemini Flash model...");
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${GEMINI_API_KEY}`);
+            const data = await response.json();
+            if (data.models) {
+                const flashModels = data.models
+                    .map((m: any) => m.name.replace("models/", ""))
+                    .filter((name: string) => name.includes("flash") && !name.includes("preview") && !name.includes("lite"))
+                    .sort((a: string, b: string) => b.localeCompare(a));
+                
+                if (flashModels.length > 0) {
+                    modelName = flashModels[0];
+                    console.log(`✨ Using dynamic model: ${modelName}\n`);
+                }
+            }
+        } catch (err) {
+            console.log("⚠️ Failed to auto-detect model, using default.\n");
+        }
+    }
+
     const model = genAI.getGenerativeModel({
-        model: "gemini-2.5-flash",
+        model: modelName,
         tools: geminiTools,
     });
 
